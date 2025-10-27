@@ -91,35 +91,35 @@ li {
   list-style: none;
 }
 nav {
-  background-color: var(--catppuccin-background-surface);
-}
-nav,
-nav > ul {
   display: flex;
   flex-direction: column;
   justify-content: left;
-}
-ul {
   gap: var(--space-md);
   padding: var(--space-md);
 }
+
+ul {
+  display: contents;
+}
+
+.logo-outer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--catppuccin-background-surface);
+}
 @media (min-width: 36rem) {
-  nav,
-  nav > ul {
+  nav {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-  }
-  ul {
     justify-content: end;
   }
 }
-
-.logo > img {
+.logo-image {
   display: block;
   padding: 0;
   margin: 0;
-  max-width: 8rem;
   height: 8rem;
+  width: auto;
   object-fit: contain;
 }
