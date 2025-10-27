@@ -71,12 +71,19 @@ class Post {
   #html;
   constructor(name, content) {
     Post.id++;
-    this.id = Post.id;
     this.name = name;
-    this.#html = document.createElement('article');
     this.content = content;
+    this.#html = document.createElement('article');
+    const username = document.createElement('h4');
+    username.textContent = this.name;
+    const text = document.createElement('p');
+    text.textContent = this.content;
+    this.#html.append(username);
+    this.#html.append(text);
     this.likes = 0;
     this.comment;
+    this.setID();
+    this.setClass();
   }
 
   increaseLike() {
@@ -95,7 +102,13 @@ class Post {
 
   set content(value) {
     this.#content = value;
-    this.#html.textContent = this.#content;
+  }
+
+  setID() {
+    this.#html.id = Post.id;
+  }
+  setClass() {
+    this.#html.classList.add('post');
   }
 
   get html() {
