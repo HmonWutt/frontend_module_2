@@ -152,6 +152,11 @@ nav {
   padding: var(--space-xl);
   justify-content: center;
 }
+.article{
+    display:flex; flex-wrap:wrap; gap: var(--space-lg);padding: var(--space-lg);
+    li { padding: var(--space-sm);}
+}
+
 .contact {
   display: grid;
   background: var(--catppuccin-background-surface);
