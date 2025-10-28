@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  alert('Dom is ready');
   const container = document.getElementById('main');
 
   function generatePosts(num) {

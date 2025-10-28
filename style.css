@@ -68,6 +68,7 @@ body {
   padding-left: env(safe-area-inset-left);
   background-color: var(--catppuccin-background-base);
   color: var(--catppuccin-text-primary);
+  accent-color: var(--catppuccin-accent-green);
 }
 /* --- CSS Reset to Remove Default Browser Margins --- */
 body,
@@ -78,14 +79,24 @@ h4,
 p,
 ul,
 ol,
-figure {
+figure,
+fieldset {
   margin: 0;
   padding: 0;
+}
+fieldset {
+  border: none;
 }
 a {
   text-decoration: none;
   font-weight: bold;
   color: var(--catppuccin-accent-blue);
+}
+.active {
+    border:1px solid var(--catppuccin-accent-blue);
+    background-color:var(--catppuccin-background-base);
+    padding:var(--space-sm);
+    border-radius:var(--space-xs);
 }
 li {
   list-style: none;
@@ -93,10 +104,24 @@ li {
 nav {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  align-items: center;
+  justify-content: center;
   gap: var(--space-md);
+  padding: 0 var(--space-md);
+  @media (min-width: 36rem) {
+    justify-content: start;
+  }
 }
+.logo-outer {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--catppuccin-background-surface);
+  padding: var(--space-md);
 
+  @media (min-width: 36rem) {
+    justify-content: end;
+  }
+}
 ul {
   display: contents;
 }
@@ -104,13 +129,14 @@ ul {
 .logo-outer,
 nav {
   display: flex;
+    console.log(link.getAttribute('href'), 'currentUrl', currentUrl);
+    console.log(link.getAttribute('href'), 'currentUrl', currentUrl);
   flex-direction: column;
-}
-.logo-outer {
-  justify-content: space-between;
-  align-items: start;
-  background-color: var(--catppuccin-background-surface);
-  padding: var(--space-md);
+  @media (min-width: 36rem) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .logo-image {
@@ -119,16 +145,73 @@ nav {
   margin: 0;
   height: 5rem;
   width: auto;
-  object-fit: contain;
+  object-fit: cover;
 }
-@media (min-width: 36rem) {
-  .logo-outer,
-  nav {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.main {
+  display: flex;
+  padding: var(--space-xl);
+  justify-content: center;
+}
+.contact {
+  display: grid;
+  background: var(--catppuccin-background-surface);
+  padding: var(--space-lg);
+  width: 85%;
+  border-radius: var(--space-lg);
+}
+form {
+  display: grid;
+  gap: var(--space-sm);
+  @media (min-width: 36rem) {
+    grid-template-columns: repeat(2, 1fr);
   }
-  nav {
-    justify-content: end;
+}
+.form-group {
+  display: grid;
+}
+label {
+  margin: 1ch 0;
+}
+filedset {
+  display: grid;
+  gap: inherit;
+  grid-template-columns: inherit;
+}
+fieldset:has([required]) legend,
+.form-group:has(:not([type='radio'])[required]) label {
+  display: flex;
+  gap: 1ch;
+  &::after {
+    content: '*';
+    color: var(--catppuccin-accent-red);
   }
+}
+.form-group:has([type='radio'], [type='checkbox']) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1ch;
+}
+/* .form-group:has([type='radio']) { */
+/*   flex-direction: column; */
+/*   @media (mid-width: 36rem) { */
+/*     flex-direction: row; */
+/*   } */
+/* } */
+.span-all {
+  grid-column: 1/-1;
+}
+input,
+textarea {
+  border: 1px solid var(--catppuccin-background-base);
+  border-radius: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+
+  &:focus-visible {
+    outline-color: var(--catppuccin-accent-green);
+  }
+}
+textarea {
+  resize: block;
+  box-sizing: content-box;
+  height: 6lh;
 }
