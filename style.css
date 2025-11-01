@@ -51,8 +51,8 @@
   --catppuccin-accent-red: #f38ba8;
 
   /* breakpoints */
-  --bp-sm: 36 rem; /*~576px*/
-  --bp-md: 48 rem; /*~768px*/
+  --bp-sm: 36rem; /*~576px*/
+  --bp-md: 48rem; /*~768px*/
   --bp-lg: 64rem; /*~1024px*/
   --bp-xl: 80rem; /*~1280px*/
 }
@@ -60,17 +60,18 @@ body,
 html {
   height: 100%;
   font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans';
+  background-color: var(--catppuccin-background-base);
+  color: var(--catppuccin-text-primary);
+  accent-color: var(--catppuccin-accent-green);
 }
 body {
   padding-top: env(safe-area-inset-top);
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
-  background-color: var(--catppuccin-background-base);
-  color: var(--catppuccin-text-primary);
-  accent-color: var(--catppuccin-accent-green);
 }
 /* --- CSS Reset to Remove Default Browser Margins --- */
+
 body,
 h1,
 h2,
@@ -87,63 +88,56 @@ fieldset {
 fieldset {
   border: none;
 }
+
 a {
   text-decoration: none;
   font-weight: bold;
   color: var(--catppuccin-accent-blue);
 }
 .active {
-    border:1px solid var(--catppuccin-accent-blue);
-    background-color:var(--catppuccin-background-base);
-    padding:var(--space-sm);
-    border-radius:var(--space-xs);
+  border: 1px solid var(--catppuccin-accent-blue);
+  background-color: var(--catppuccin-background-base);
+  padding: var(--space-sm);
+  border-radius: var(--space-xs);
 }
 li {
   list-style: none;
 }
-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-md);
-  padding: 0 var(--space-md);
-  @media (min-width: 36rem) {
-    justify-content: start;
-  }
-}
-.logo-outer {
-  justify-content: center;
-  align-items: center;
-  background-color: var(--catppuccin-background-surface);
-  padding: var(--space-md);
-
-  @media (min-width: 36rem) {
-    justify-content: end;
-  }
-}
-ul {
-  display: contents;
-}
-
 .logo-outer,
 nav {
   display: flex;
-    console.log(link.getAttribute('href'), 'currentUrl', currentUrl);
-    console.log(link.getAttribute('href'), 'currentUrl', currentUrl);
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   @media (min-width: 36rem) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 }
+nav {
+  gap: var(--space-md);
+  @media (min-width: 36rem) {
+    justify-content: end;
+  }
+}
+.logo-outer {
+  background-color: var(--catppuccin-background-surface);
+  padding: var(--space-md) 0;
+
+  @media (min-width: 36rem) {
+    padding: 0 var(--space-md);
+  }
+}
+ul {
+  display: contents;
+}
 
 .logo-image {
   display: block;
   padding: 0;
   margin: 0;
-  height: 5rem;
+  height: 4rem;
   width: auto;
   object-fit: cover;
 }
@@ -152,9 +146,14 @@ nav {
   padding: var(--space-xl);
   justify-content: center;
 }
-.article{
-    display:flex; flex-wrap:wrap; gap: var(--space-lg);padding: var(--space-lg);
-    li { padding: var(--space-sm);}
+.article {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  li {
+    padding: var(--space-sm);
+  }
 }
 
 .contact {
@@ -177,7 +176,7 @@ form {
 label {
   margin: 1ch 0;
 }
-filedset {
+fieldset {
   display: grid;
   gap: inherit;
   grid-template-columns: inherit;
