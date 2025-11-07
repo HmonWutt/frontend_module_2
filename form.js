@@ -5,12 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const firstname = document.getElementById('fname');
   const lastname = document.getElementById('lname');
   const email = document.getElementById('email');
-  const checkBox = document.getElementById('consent');
-  const fields = myForm.querySelectorAll('input, textarea');
-  fields.forEach((field) => {
-    field.addEventListener('change', function (e) {
+  const radioButton = [...document.querySelectorAll('input[name="type"]')];
+  const consent = document.getElementById('consent');
+  const textarea = myForm.querySelector('textarea');
+  const inputs = [firstname, lastname, email, ...radioButton, consent, textarea];
+  inputs.forEach((input) => {
+    input.addEventListener('input', function (e) {
       if (isFormValid()) {
         submitButton.disabled = false;
+      } else {
+        submitButton.disabled = true;
       }
     });
   });
@@ -20,12 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
     myForm.submit();
   });
   function isFormValid() {
-    const isFirstnameInvalid = containsNumber(firstname.value);
-    const isLastnameInvalid = containsNumber(lastname.value);
-    return !isFirstnameInvalid && !isFirstnameInvalid;
+    const isRadioButtonChecked = radioButton.some((radio) => radio.checked);
+    const consentGiven = consent.checked;
+    const isFirstnameValid = containsNoNumber(firstname.value.trim());
+    const isLastnameValid = containsNoNumber(lastname.value.trim());
+    const isTextAreaFilled = textarea.value.trim();
+    const isEmailFilled = isEmailValid(email.value.trim());
+    return (
+      isFirstnameValid && isFirstnameValid && isEmailFilled && consentGiven && isTextAreaFilled
+    );
   }
-  function containsNumber(name) {
-    const regex = /\d/;
-    return regex.test(name);
+  function containsNoNumber(name) {
+    const regex = /\d+/;
+    return !regex.test(name);
+  }
+  function isEmailValid(email) {
+    const emailPattern = /^[^.\s@(),:;<>[\]][^\s@(),:;<>[\]]+@[a-zA-Z0-9-.]+[a-zA-Z]{2}$/;
+    return emailPattern.test(email);
   }
 });

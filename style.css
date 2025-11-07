@@ -135,10 +135,9 @@ ul {
 
 .logo-image {
   display: block;
-  padding: 0;
-  margin: 0;
   height: 4rem;
   width: auto;
+  margin: var(--space-md);
   object-fit: cover;
 }
 .main {
